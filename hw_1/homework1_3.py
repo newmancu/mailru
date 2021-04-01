@@ -95,21 +95,6 @@ def f1_score(y_true, y_predict, percent=None):
     res[~indexes] = res[~indexes] / (precision + recall)[~indexes]
 
     return res
-
-def confusion_matrix(y_true, y_predict, percent=None):
-    y_true, y_predict = get_samples_bin(y_true, y_predict, percent)
-    TP, TN, FP, FN = get_params(y_true, y_predict)
-
-    y_true_b = np.array(y_true, dtype=bool)
-    y_predict_b = np.array(y_predict, dtype=bool)
-    A = np.array(y_true_b == y_predict_b, dtype=np.int32)
-    matrix = y_true.T@y_predict
-    print(TP)
-    print(TN)
-    print(FP)
-    print(FN)
-    
-    print(matrix)
     
 
 if __name__ == '__main__':
@@ -154,4 +139,3 @@ if __name__ == '__main__':
     print()
     
     print(f"[MY] lift:      {lift_score(y_true, y_predict, 100)}")
-    confusion_matrix(y_true, y_predict, 100)
